@@ -1,8 +1,0 @@
-prefix=/home/biorola/tmdriver_ws/install
-
-Name: industrial_trajectory_filters
-Description: Description of industrial_trajectory_filters
-Version: 0.7.3
-Cflags: -I${prefix}/include -I/opt/ros/melodic/share/orocos_kdl/cmake/../../../include -I/usr/include/eigen3
-Libs: -L${prefix}/lib -lindustrial_trajectory_filters /opt/ros/melodic/lib/liborocos-kdl.so.1.4.0
-Requires: class_loader moveit_core moveit_ros_planning pluginlib trajectory_msgs

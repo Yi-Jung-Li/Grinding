@@ -1,8 +1,0 @@
-prefix=/home/biorola/tmdriver_ws/devel
-
-Name: grinding_python
-Description: Description of grinding_python
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/home/biorola/tmdriver_ws/devel
-
-Name: rviz_lighting
-Description: Description of rviz_lighting
-Version: 0.0.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
