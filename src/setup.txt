@@ -1,0 +1,10 @@
+tm14_planning_excution.launch
+>>>(find tm12_moveit_config)/config/joint_names.yaml
+>>>(find tm_driver)/launch/tm12_moveit_bringup.launch
+
+tm12_moveit_bringup.launch
+>>>(find tm12_description)/launch/tm12_upload.launch
+
+tm12_upload.launch
+>>>(find tm12_description)/urdf/tm12_robot.urdf.xacro
+

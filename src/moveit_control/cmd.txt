@@ -1,0 +1,57 @@
+Activate python2.7:
+source activate py27_gpu
+
+Open the simulation environment:
+roslaunch tm14_moveit_config demo.launch 
+
+Open the simulation environment and control real manipulator:
+roslaunch tm14_moveit_config tm14_moveit_planning_execution.launch sim:=False robot_ip:=192.168.0.98
+
+Generation trajectory plan:
+python generate_trajectory_plan.py -cl -n 50 -v normal
+
+Generation cartesian plan:
+python generate_cartesian_plan.py -cl -n 50 -v normal
+
+Generation continuous plan:
+python generate_continuous_trajectory_plan.py -cl -n 5 -v normal
+
+Generation continuous cartesian plan:
+python generate_continuous_cartesian_trajectory_plan.py -cl -n 5 -v normal
+
+Generate Spoofing plan:
+python spoofing_plan.py -f plan -s spoof
+
+Generate contunuous Spoofing plan:
+python spoofing_plan.py -f motion_plan/continuous_plan -s motion_plan/continuous_plan_spoof -r 0.5
+
+Generate contunuous Spoofing plan:
+python spoofing_plan.py -f motion_plan/continuous_cartesian_plan -s motion_plan/continuous_cartesian_plan_spoof -r 0.01
+
+Excute normal plan:
+python excute_plan.py -cl -f plan
+
+Excute cartesian plan:
+python excute_plan.py -cl -f cart_plan
+
+Excute spoof plan:
+python excute_plan.py -cl -f spoof
+
+Excute continuous plan:
+python excute_continuous_plan.py -cl -f continuous_plan
+
+Excute continuous cartesian plan:
+python excute_continuous_plan.py -cl -f continuous_cartesian_plan
+
+Collect robot info:
+python get_robot_info.py -cl -dt 0.03
+
+Collect robot info. in simulation:
+python get_robot_info_sim.py -cl -dt 0.095
+
+Open the service for getting robot state:
+conda activate py27
+python Get_robot_state_server.py 
+
+Demo the anomaly detection:
+python Get_robot_state_client0.py 

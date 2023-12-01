@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="CAR">
+  <link
+    name="CAR">
+    <inertial>
+      <origin
+        xyz="9.3573E-06 0.00143080000000002 0.37284"
+        rpy="0 0 0" />
+      <mass
+        value="360.66" />
+      <inertia
+        ixx="35.958"
+        ixy="0.0012031"
+        ixz="-0.0011792"
+        iyy="27.864"
+        iyz="0.25024"
+        izz="30.027" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://CAR/meshes/CAR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.62745 0.62745 0.62745 1" />
+        <!--
+        <texture
+          filename="package://CAR/textures/" />
+        -->
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.5707963267949 0 0" />
+      <geometry>
+        <mesh
+          filename="package://CAR/meshes/CAR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <!--
+  <link name="dummy">
+    </link>
+    <joint name="dummy_joint" type="fixed">
+      <parent link="dummy"/>
+      <child link="CAR"/>
+    </joint>
+  -->
+</robot>

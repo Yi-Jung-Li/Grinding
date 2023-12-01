@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro" name="tm14">
+
+  <xacro:arg name="ns" default="" />
+  <xacro:arg name="prefix" default="" />
+
+  <xacro:arg name="gripper" default="none" />
+
+  <xacro:arg name="color" default="none" />
+
+  <xacro:arg name="trans_hw_iface" default="hardware_interface/PositionJointInterface" />
+
+  <xacro:include filename="$(find tmr_description)/xacro/macro.gazebo.xacro" />
+  <xacro:include filename="$(find tmr_description)/xacro/macro.transmission.xacro" />
+  <xacro:include filename="$(find tmr_description)/xacro/macro.materials.xacro" />
+
+  <!-- tm14 -->
+  <xacro:include filename="$(find tmr_description)/xacro/macro.tm14.urdf.xacro" />
+
+
+  <!--  -->
+  <xacro:tmr_gazebo ns="$(arg ns)" prefix="$(arg prefix)" />
+  <xacro:tmr_transmission prefix="$(arg prefix)" hw_iface="$(arg trans_hw_iface)" />
+  <xacro:tmr_materials/>
+
+
+  <!-- Arm -->
+  <xacro:property name="color" value="$(arg color)"/>
+  <xacro:if value="${color == 'none'}">
+    <xacro:tm14 ns="$(arg ns)" prefix="$(arg prefix)" />
+  </xacro:if>
+  <!-- Arm.color.stl -->
+  <xacro:unless value="${color == 'none'}">
+    <xacro:tm14 ns="$(arg ns)" prefix="$(arg prefix)" color="${color}" format="stl" />
+  </xacro:unless>
+
+  <!-- Arm + Gripper -->
+  <xacro:property name="gripper" value="$(arg gripper)"/>
+  <xacro:if value="${gripper == 'robotiq_2f'}">
+    <xacro:include filename="$(find tmr_description)/xacro/gripper/robotiq_2f.urdf.xacro" />
+    <xacro:robotiq_2f prefix="$(arg prefix)"/>
+  </xacro:if>
+  <xacro:if value="${gripper == 'rg2'}">
+    <xacro:include filename="$(find tmr_description)/xacro/gripper/on_robot_rg2.urdf.xacro" />
+    <xacro:on_robot_rg2 prefix="$(arg prefix)"/>
+  </xacro:if>
+  
+  <!-- CAR -->
+  <xacro:include filename="$(find CAR)/urdf/CAR.urdf" />
+  <joint name="world_CAR" type="fixed">
+    <parent link="base" />
+    <child link="CAR" />
+    <origin xyz="-0.2 0 -0.765" rpy="0 0 -1.5707963267949" />
+  </joint>
+
+  <!-- CAR2 -->
+  <xacro:include filename="$(find CAR2)/urdf/CAR2.urdf" />
+  <joint name="world_CAR2" type="fixed">
+    <parent link="base" />
+    <child link="CAR2" />
+    <origin xyz="-0.2 0.75 -0.765" rpy="0 0 -1.5707963267949" />
+  </joint>
+
+
+  <!-- table -->
+  <xacro:include filename="$(find table)/urdf/table.urdf" />
+  <joint name="world_table" type="fixed">
+    <parent link="base" />
+    <child link="table" />
+    <origin xyz="0 0 0.005" rpy="0 0 -1.5707963267949" /> 
+  </joint>
+
+    <!-- <origin xyz="-0.095 0.0775 -0.01" rpy="0 0 1.5707963267949" /> -->
+  <!-- mini_robot -->
+  <xacro:include filename="$(find mini_robot)/urdf/mini_robot.urdf" />
+  <joint name="world_mini_robot" type="fixed">
+    <parent link="base" />
+    <child link="mini_robot" />
+    <origin xyz="0 0.8275 0.0853" rpy="0 0 0" /> 
+  </joint>
+<!-- <origin xyz="0 0.8275 0.0853" rpy="0 0 0" />  -->
+
+
+  <!-- work_pieces -->
+  
+  <xacro:include filename="$(find faucet_T)/urdf/faucet_T.urdf" />
+  <joint name="world_faucet_T" type="fixed">
+    <parent link="link_6" />
+    <child link="faucet_T" />
+    <origin xyz="-0.08 -0.12 0.03" rpy="-1.5707963267949 0 0" />
+  </joint>
+
+  <!-- camera -->
+  <xacro:include filename="$(find camera_base)/urdf/camera_base.urdf" />
+  <joint name="world_camera_base" type="fixed">
+    <parent link="base" />
+    <child link="camera_base" />
+    <origin xyz="-0.08 -0.70375 0.3743819" rpy="1.5707963267949 0 0" />
+  </joint>
+
+
+<!--
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link="$(arg prefix)base"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+-->
+
+</robot>

@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: tmr_description
+    relative_path: xacro/tm14_with_table.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/tm14.srdf
+  CONFIG:
+    author_name: Samuel
+    author_email: r09522820@ntu.edu.tw
+    generated_timestamp: 1651670847

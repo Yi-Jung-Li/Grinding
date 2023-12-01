@@ -1,0 +1,4 @@
+int8 state
+---
+float64[] joint_state
+float64[] end_effect 

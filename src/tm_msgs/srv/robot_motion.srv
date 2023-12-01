@@ -1,0 +1,10 @@
+string goal_format # 'JPP' or 'CPP' (Joint angle or Cartesian), 'plan' for excute certain plan 
+string motion_type # 'PTP' or 'line' , if goal_format is 'plan', motion_type will be the file path of plan 
+float64[] goal
+float64 velocity_scaling_factor # Set a scaling factor for optionally reducing the maximum joint velocity. Allowed values are in (0,1]
+bool constraints
+string plan_name # file name of plan
+int32 plan_index
+bool move_to_plan_first_pose
+---
+bool ok

@@ -1,0 +1,51 @@
+Activate python environment:
+1.For moveit
+$ conda activate py27
+2.For camera, Faster RCNN, trejactory A.D. and image A.D.
+$ conda activate pytorch_env
+
+
+Open the simulation environment:
+roslaunch tm14_moveit_config demo.launch 
+
+Open the simulation environment and control real manipulator:
+roslaunch tm14_moveit_config tm14_moveit_planning_execution.launch sim:=False robot_ip:=192.168.0.98
+
+Open the service for getting robot state:
+$ conda activate py27
+$ python Get_robot_state_server.py 
+
+Test server:
+$ rosservice call /get_robot_state 1
+
+Demo the trajectory anomaly detection:
+$ conda activate pytorch_env
+$ python Get_robot_state_client.py 
+
+
+Service for controll manipulator:
+$ conda activate py27
+$ python excute_plan_server.py
+
+Controll manipulator:
+$ python excute_plan_client.py
+
+Service for getting image from camera:
+$ conda activate pytorch_env
+$ python Acquisition_image_server.py
+
+Service for asking image A.D
+$ conda activate pytorch_env
+$ python Image_ad_server.py
+
+Move to certain position
+$ rosservice call /tm_driver/send_script "demo" "PTP(\"CPP\",309,558,300,-150,0,90,40,200,0,false)"
+
+Move to initial capture pose
+$ rosservice call /move_robot 'init' 's' [0] 0 True 's' 0 True
+
+Move to certain Capture Pose
+$ rosservice call /move_robot 'plan' 's' [0] 0 True 'plan_path/Capture_plan_20220905' index True
+$ rosservice call /move_robot 'plan' 's' [0] 0 True 'plan_path/Capture_plan_metalFrame_spacing15_macro_slow' index False
+rosservice call /move_robot 'plan' 's' [0] 0 True 'plan_path/polishing/10deg_3traj' index True
+rosservice call /move_robot 'plan' 's' [0] 0 True 'plan_path/polishing/10deg_v0.03_wide' 1 True
