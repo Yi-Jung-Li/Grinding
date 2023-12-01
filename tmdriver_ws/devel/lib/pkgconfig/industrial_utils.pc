@@ -1,0 +1,8 @@
+prefix=/home/biorola/tmdriver_ws/devel
+
+Name: industrial_utils
+Description: Description of industrial_utils
+Version: 0.7.3
+Cflags: -I/home/biorola/tmdriver_ws/src/industrial_core/industrial_utils/include
+Libs: -L${prefix}/lib -lindustrial_utils
+Requires: roscpp urdf

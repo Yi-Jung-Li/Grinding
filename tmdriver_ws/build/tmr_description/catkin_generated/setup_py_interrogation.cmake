@@ -1,0 +1,7 @@
+set(tmr_description_SETUP_PY_SETUP_MODULE "distutils.core")
+set(tmr_description_SETUP_PY_VERSION "1.1.0")
+set(tmr_description_SETUP_PY_SCRIPTS "")
+set(tmr_description_SETUP_PY_PACKAGES "urdf_modification")
+set(tmr_description_SETUP_PY_PACKAGE_DIRS "src/urdf_modification")
+set(tmr_description_SETUP_PY_MODULES "")
+set(tmr_description_SETUP_PY_MODULE_DIRS "")

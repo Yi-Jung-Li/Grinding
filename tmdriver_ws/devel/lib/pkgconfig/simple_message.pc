@@ -1,0 +1,8 @@
+prefix=/home/biorola/tmdriver_ws/devel
+
+Name: simple_message
+Description: Description of simple_message
+Version: 0.7.3
+Cflags: -I/home/biorola/tmdriver_ws/src/industrial_core/simple_message/include
+Libs: -L${prefix}/lib -lsimple_message_dummy
+Requires: industrial_msgs roscpp
